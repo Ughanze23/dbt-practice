@@ -1,0 +1,14 @@
+snapshots:
+  - name: order_snapshot
+    relation: source('jaffle_shop','orders')
+    config:
+      schema: snapshots
+      database: alt-school-423017
+      unique_key: id
+      strategy: check
+      check_cols: ['id','user_id','order_data','status']
+      hard_delete: ignore
+      dbt_valid_to_current: "date(9999,12,31)"
+
+      
+

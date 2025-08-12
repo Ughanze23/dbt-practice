@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge'
+    )
+}}
+
 with orders as 
 (
 
@@ -30,4 +37,9 @@ final as (
     left join order_payments using (order_id)
 )
 
-select * from final
+select * 
+from final
+{% if is_incremental() %}
+    -- this filter will only be applied on an incremental run
+    where order_date > (select max(order_date) from {{ this }}) 
+{% endif %}
