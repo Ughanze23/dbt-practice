@@ -1,0 +1,7 @@
+models:
+  - name: fct_orders
+    config:
+      contract:
+        enforced: true
+    columns:
+  
