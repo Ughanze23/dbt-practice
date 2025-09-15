@@ -1,0 +1,17 @@
+sources:
+  - name: jaffle_shop
+    database: alt-school-423017
+    schema: jaffle_shop
+    tables:
+      - name: customers
+        description: one record per customer
+      - name: orders
+        description: record of an order
+      - name: order_items
+        description: items included in an order
+      - name: supplies
+        description: details of supplier per sku
+      - name: products
+        description: product details
+      - name: stores
+        description: location of stores
