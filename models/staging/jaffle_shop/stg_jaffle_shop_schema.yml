@@ -1,0 +1,19 @@
+models:
+  - name: stg_jaffle_shop__customers
+    description: one unique customer per row
+    config:
+      tags: ['staging']
+    columns:
+      - name: customer_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: customer's first name
+      - name: last_name
+        description: customer's last name
+    
+  - name: stg_jaffle_shop__orders
+    description: one order per row
+  
