@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='incremental'
+    )
+}}
+
 with orders as (
 select id as order_id,
 customer as customer_id,
@@ -11,3 +17,8 @@ order_total
 )
 
 select * from orders
+ {% if is_incremental() %}
+    -- this filter will only be applied on an incremental run
+    where ordered_at >= (select max(ordered_at) from {{ this }}) 
+{% endif %}
+order by ordered_at desc
